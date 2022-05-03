@@ -16,7 +16,6 @@ import java.util.List;
  * Created by 37269 on 2018/7/25.
  */
 public class UserDetailsServiceImpl implements UserDetailsService {
-
     private SellerService sellerService;
 
     public void setSellerService(SellerService sellerService) {
@@ -31,14 +30,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         TbSeller seller = sellerService.findOne(username);//根据登录名称查询商家对象
-        if(seller==null){
-            return null;
-        }else{
-            if("1".equals(seller.getStatus())){
+        if(seller!=null){
+            if(seller.getStatus().equals("1")){
                 return new User(username,seller.getPassword(),authorities);
             }else{
                 return null;
             }
+        }else{
+            return null;
         }
     }
+
+
 }
