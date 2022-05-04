@@ -32,11 +32,16 @@
                     </div>
 
                     <div class="box-body">
-                  			 <ol class="breadcrumb">	                        	
+                  			 <!--<ol class="breadcrumb">
                         		<li ng-repeat="pojo in breadcrumb">
 		                        	<a href="#" ng-click="showList($index,pojo.id)" >{{pojo.name}}</a>
 		                        </li>
-	                        </ol>
+	                        </ol>-->
+							<ol class="breadcrumb">
+								<li><a href="#" ng-click="grade=1;selectList({id:0})">顶级分类列表</a></li>
+								<li><a href="#" ng-click="grade=2;selectList(entity_1)">{{entity_1.name}}</a></li>
+								<li><a href="#" ng-click="grade=3;selectList(entity_2)">{{entity_2.name}}</a></li>
+							</ol>
 
                         <!-- 数据表格 -->
                         <div class="table-box">
@@ -77,7 +82,8 @@
 									      	{{ typeTemplateMap[ entity.typeId ]}}
 									      </td>									      
 		                                  <td class="text-center">		                                     
-		                                      <button ng-if="breadcrumb.length<3" type="button" class="btn bg-olive btn-xs" ng-click="search(entity.id,entity.name)">查询下级</button>
+<!--		                                      <button ng-if="breadcrumb.length<3" type="button" class="btn bg-olive btn-xs" ng-click="search(entity.id,entity.name)">查询下级</button>-->
+											  <button ng-if="breadcrumb.length<3" type="button" class="btn bg-olive btn-xs" ng-click="setGrade(grade+1);selectList(entity)">查询下级</button>
 		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)" >修改</button>
 		                                  </td>
 			                          </tr>
@@ -111,7 +117,8 @@
 		      		<td>上级商品分类</td>
 		      		<td>
 		      		   <span ng-repeat="pojo in breadcrumb">
-						   {{pojo.name}} >>
+<!--						   {{pojo.name}} >>-->
+						   {{entity_1.name}} >>  {{entity_2.name}}
 					   </span>
 		      		</td>
 		      	</tr>

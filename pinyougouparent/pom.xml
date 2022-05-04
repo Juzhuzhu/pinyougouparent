@@ -18,6 +18,7 @@
         <module>pinyougou-manager-web</module>
         <module>pinyougou-shop-web</module>
 
+
     </modules>
 
     <!-- 集中定义依赖版本号 -->

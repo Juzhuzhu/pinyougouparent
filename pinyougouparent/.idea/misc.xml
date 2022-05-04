@@ -17,6 +17,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/dubboxdemo-service/pom.xml" />
+        <option value="$PROJECT_DIR$/fastDFSdemo/pom.xml" />
         <option value="$PROJECT_DIR$/pinyougou-manage-web/pom.xml" />
         <option value="$PROJECT_DIR$/pinyougou-manager/pom.xml" />
         <option value="$PROJECT_DIR$/spring-security-demo/pom.xml" />

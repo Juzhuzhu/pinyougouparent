@@ -47,21 +47,22 @@ app.controller('goodsController' ,function($scope,$controller,$location ,goodsSe
 	}
 	
 	//增加
-	/*
 	$scope.add=function(){
 
         $scope.entity.goodsDesc.introduction=editor.html();//商品介绍
 
-        goodsService.add( $scope.entity  ).success(
+        goodsService.add($scope.entity).success(
 			function(response){
-                alert(response.message);
 				if(response.success){
+					alert('保存成功');
 		        	$scope.entity={};
                     editor.html("");//清空富文本编辑器
+				}else {
+					alert(response.message);
 				}
 			}		
 		);				
-	}*/
+	}
 
 
     //保存
@@ -123,7 +124,23 @@ app.controller('goodsController' ,function($scope,$controller,$location ,goodsSe
 
     }
 
-    $scope.entity={ goodsDesc:{itemImages:[],specificationItems:[] } };//商品实体
+	/**
+	 * 上传图片
+	 */
+	$scope.uploadFile=function(){
+		uploadService.uploadFile().success(function(response) {
+			if(response.success){//如果上传成功，取出url
+				$scope.image_entity.url=response.message;//设置文件地址
+			}else{
+				alert(response.message);
+			}
+		}).error(function() {
+			alert("上传发生错误");
+		});
+	};
+
+    // $scope.entity={ goodsDesc:{itemImages:[],specificationItems:[] } };//商品实体
+	$scope.entity={goods:{},goodsDesc:{itemImages:[]}};//定义页面实体结构
 
     //添加到图片列表
     $scope.add_image_entity=function(){

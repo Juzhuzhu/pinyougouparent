@@ -24,6 +24,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dubboxdemo-service" target="1.7" />
+      <module name="fastDFSdemo" target="1.7" />
       <module name="pinyougou-manage-web" target="1.7" />
       <module name="pinyougou-manager" target="1.5" />
     </bytecodeTargetLevel>
